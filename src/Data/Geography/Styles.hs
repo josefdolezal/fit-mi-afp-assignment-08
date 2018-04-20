@@ -32,7 +32,7 @@ boxed = [ (Grass, ' ')
         , (Desert, '░')
         , (Water, '~')
         , (Obstacle, '█')
-        , (Tree, '©')
+        , (Tree, '^')
         ]
 
 -- | Create transformation from 'MapField' to 'Char'

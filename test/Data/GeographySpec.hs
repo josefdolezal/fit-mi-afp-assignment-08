@@ -57,9 +57,9 @@ spec = do
        displayMap Styles.boxedStyle complexMap1  `shouldBe` ["    ░░░░",
                                                              "    ░░░░",
                                                              "    ░░░░",
-                                                             "~~~~©©©©",
-                                                             "~~~~©©©©",
-                                                             "~~~~©©©©"]
+                                                             "~~~~^^^^",
+                                                             "~~~~^^^^",
+                                                             "~~~~^^^^"]
        displayMap Styles.simpleStyle complexMap2 `shouldBe` ["OOOORRRRR",
                                                              "OOOORRRRR",
                                                              "OOOORRRRR",
