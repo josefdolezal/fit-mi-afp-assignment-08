@@ -31,6 +31,19 @@ data Quadrant a = Empty                      -- ^ Empty quadrant
 makeLenses ''QuadTree
 makeLenses ''Quadrant
 
+-- Decompress Quadrant with given width and height
+decompress :: Integer -> Integer -> Quadrant a -> [[a]]
+decompress _ _ Empty              = [[]]
+decompress w h (Leaf a)           = replicate (fromIntegral h) $ replicate (fromIntegral w) a
+decompress w h (Node tl tr bl br) = tops ++ bottoms
+  where dtl = decompress (w `div` 2) (higher h) tl
+        dtr = decompress (higher w) (higher h) tr
+        dbl = decompress (w `div` 2) (h `div` 2) bl
+        dbr = decompress (higher w) (h `div` 2) br
+        higher i = ceiling $ (fromIntegral i ) / 2
+        tops = zipWith (++) dtl dtr
+        bottoms = zipWith (++) dbl dbr
+
 instance Functor QuadTree where
   fmap = undefined
 
